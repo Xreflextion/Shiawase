@@ -22,6 +22,7 @@
 
             var i = 2;
             var img = document.getElementById("present");
+
             function open_gift() {
                 var button = document.getElementById("open");
                 button.style.display = "none";
@@ -40,7 +41,7 @@
                             var txt = document.getElementById("msg");
                             txt.innerHTML = "You have received 5 coupons. Happy Birthday!";
                             var div = document.getElementById("div");
-                            div.style.display = "initial";
+                            div.style.display = "inline-block";
                         });
                     };
                 }, 100);
