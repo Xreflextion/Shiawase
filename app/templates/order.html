@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/jquery-3.6.0.js') }}"></script>
+
+<p id="p" style="display: none;">{{ dish }}</p>
+<h1>Make an Order</h1>
+<br>
+
+<div id="order_div">
+</div>
+
+<div class="form_container">
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.dish.label }}<br>
+            {{ form.dish(readonly=true) }}
+        </p>
+
+        <p>Currently, the store is closed for as we are currently on a trip for inspiration and training. We will reopen on September 9, 2021. Sorry for the inconvenience!</p>
+        <br>
+        <p>
+            {{ form.date.label }}<br>
+            {{ form.date(type="date") }}<br>
+            {% for error in form.date.errors %}
+                <span style="color: red;">[{{ error }}]</span><br>
+            {% endfor %}
+        </p>
+    
+        <p>
+            {{ form.quantity.label }}<br>
+            {{ form.quantity(type="number") }}<br>
+            {% for error in form.quantity.errors %}
+                <span style="color: red;">[{{ error }}]</span><br>
+            {% endfor %}
+        </p>
+    
+        <p> 
+            {{ form.instructions.label }}<br>
+            {{ form.instructions(placeholder="Any instructions?") }}<br>
+            {% for error in form.instructions.errors %}
+                <span style="color: red;">[{{ error }}]</span><br>
+            {% endfor %}
+        </p>
+    
+        <p class="submit">{{ form.submit }}</p>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var p = document.getElementById("p");
+        var s = p.innerHTML;
+        var dish = s.split("-").join(" ");
+        var d = document.getElementById("dish");
+        d.value = dish;
+        d.style.width = (d.value.length + 1)*9 + "px";
+        d.style.textAlign = "center";
+        $("#order_div").load("/menu #" + p.innerHTML);
+        var id = "order_button";
+        var elm = {};
+        var div = document.getElementById("order_div")
+        setTimeout(() => {
+            var elms = div.getElementsByTagName("*");
+            for (var i = 0; i < elms.length; i++) {
+                if (elms[i].id == id) {
+                    elm = elms[i];
+                    break;
+                };
+            };
+            elm.remove();
+        }, 100);
+    });    
+</script>
+{% endblock %}

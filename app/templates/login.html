@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Log in</h1>
+    <!-- action = what url to go to after submitting form -->
+    <!-- novalidate = gives validation control to Flask -->
+    <!-- form.hidden_tag = protect from hackers -->
+    <div class="form_container">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}:<br>
+                {{ form.username(size=32) }}<br><br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }}:<br>
+                {{ form.password(size=32) }}<br><br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p class="submit">{{ form.submit() }}</p>
+        </form>
+        <br> 
+        <p>Don't have an account? <a href="{{ url_for('register') }}" style="color: #4da6ff; text-decoration: underline;">Register now!</a></p>
+    </div>
+    
+{% endblock %}

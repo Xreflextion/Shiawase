@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ heading }}</h1>
+    {% if filter and filter != 'default' %}
+        <p style="display:none" id="filter">{{ filter }}</p>
+    {% else %}
+        <p style="display:none" id="filter">order_date</p>
+    {% endif %}
+    <p>
+        <b>Filter by: </b>
+        <a id="dish" class="filter" href="{{ url_for('orders', filter='dish', username=current_user.username) }}">Dish</a>, 
+        <a id="order_date" class="filter" href="{{ url_for('orders', filter='order_date', username=current_user.username) }}">Date ordered</a>, 
+        <a id="delivery_date" class="filter" href="{{ url_for('orders', filter='delivery_date', username=current_user.username) }}">Delivery Date</a>
+    </p>
+    {% for order in orders %}
+        <div class="order">
+            <h3>{{ order.dish }}</h2>
+            <p>Quantity: {{ order.quantity }}</p>
+            <p>Date Ordered: {{ order.format_date(order.order_date, "%B %d, %Y") }}</p>
+            <p>{{ delivered }} {{ order.format_date(order.delivery_date, "%B %d, %Y")}}</p>
+            <p>Cost: {{ order.quantity }}</p>
+        </div><hr>
+    {% endfor %}
+
+    <script>
+        $(document).ready(function() {
+            var link = document.getElementById(document.getElementById("filter").innerHTML);
+            link.style.color = "#0052cc";
+            link.onclick = null;
+            link.style.cursor = "auto";
+            var div = document.getElementsByClassName("order");
+        });
+    </script>
+{% endblock %}

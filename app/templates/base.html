@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Welcome!</title>
+    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.6.0.js') }}"></script>
+    {{ JSGlue.include() }}
+</head>
+<body id="body">
+    <script>
+        $(document).ready(function() {
+            var button = document.getElementById("submit")
+            if (button != null) {
+                button.className = "submit";
+            };
+            var up = document.getElementById("up");
+            display_button(up);
+            window.onscroll = function(e) {
+                display_button(up);
+            }
+        });
+
+        function display_button(up) {
+            var up = document.getElementById("up");
+            if (window.scrollY <= 5 && up.style.display != "none") {
+                up.style.display = "none";
+            } else if (window.scrollY > 5 && up.style.display != "intial") {
+                up.style.display = "initial";
+            };
+        };
+    </script>
+    <div style="display: flex;">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="head" style="margin-left: auto; margin-right: 0;">
+        <span class="head" style="margin-right: auto; margin-left: 0; font-size:125%;">お客さんの幸せは一番の優先です〜</span>
+    </div>
+
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="img_a"><img src="{{ url_for('static', filename='logo.png') }}"></a>
+        <a href="{{ url_for('index') }}" class="a">Home Page</a>
+        <a href="{{ url_for('menu') }}" class="a">Menu</a>
+        <a href="{{ url_for('about') }}" class="a">About</a>
+        {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}" class="a" style="float:right;">Log in</a>
+            <style>
+                .navbar {
+                    overflow: hidden;
+                }
+            </style>
+        {% else %}
+            <div class="dropdown" style="float:right;">
+                <button>User {{ current_user.username }}</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('profile', username=current_user.username) }}">Profile</a>
+                    <a href="{{ url_for('orders', username=current_user.username, filter='default') }}">Orders</a>
+                    <a href="{{ url_for('completed_orders', username=current_user.username, filter='default') }}">Completed Orders</a>
+                    <a href="{{ url_for('logout') }} ">Log out</a>
+                </div>  
+            </div>
+        {% endif %}
+    </div>
+
+    {% with msgs = get_flashed_messages() %}
+    {% if msgs %}
+        {% for msg in msgs %}
+        <br>
+        <li class="msg">{{ msg }}</li>
+        {% endfor %}
+    {% endif %} 
+    {% endwith %}
+
+    {% if current_user.is_authenticated %}
+        {% if current_user.check_bday() and current_user.bday_celebrated == False and request.url_rule.endpoint != "index" %}
+            <meta http-equiv="refresh" content="0; url='/index'" />
+        {% endif %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+    <button type="button" onclick="document.documentElement.scrollTop = 0" class="up" id="up">UP</button>
+</body>
+</html>

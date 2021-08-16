@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>User {{ user.username }}</h1>
+    <hr>
+
+    <p>Birthday: {{ user.birthday }}</p>
+
+    <p>Number of coupons: {{ user.coupons }}</p>
+{% endblock %}
