@@ -93,6 +93,17 @@ def order(dish):
         db.session.add(order)
         db.session.commit()
         try:
+            try:
+                msg = Message('Order confirmed', sender = app.config['ADMINS'][0], recipients = ['lillian.ye06@gmail.com'])
+                msg.body = "Your order has been confirmed. It will be delivered on " + date.strftime("%B %d, %Y") + \
+                ". Thank you for ordering at Shiawase! \n \nORDER DETAILS \n" + form.dish.data + "\n" + \
+                "Date ordered: " + today.strftime("%B %d, %Y") + "\n" + \
+                "Delivery Date: " + date.strftime("%B %d, %Y") + "\n" + "Cost: " + str(quantity) + " coupon(s). " +\
+                "\nSpecial Instructions: \n" + form.instructions.data + "\n\n\nFor any questions, please email back!"\
+                "\nYours truly, \nShiawase"
+                mail.send(msg)
+            except:
+                pass
             msg = Message('Order confirmed', sender = app.config['ADMINS'][0], recipients = [user.email])
             msg.body = "Your order has been confirmed. It will be delivered on " + date.strftime("%B %d, %Y") + \
             ". Thank you for ordering at Shiawase! \n \nORDER DETAILS \n" + form.dish.data + "\n" + \
@@ -102,6 +113,7 @@ def order(dish):
             "\nYours truly, \nShiawase"
             mail.send(msg)
             flash("Your order has been confirmed. Please check your email for confirmation.")
+            
         except:
             flash("Your order has been confirmed. Thank you for ordering at Shiawase!")
         return redirect(url_for('menu'))
