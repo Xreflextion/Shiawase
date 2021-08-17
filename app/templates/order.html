@@ -53,22 +53,31 @@
     $(document).ready(function() {
         var p = document.getElementById("p");
         var s = p.innerHTML;
-        var dish = s.split("-").join(" ");
-        var d = document.getElementById("dish");
-        d.value = dish;
-        d.style.width = (d.value.length + 1)*11 + "px";
-        d.style.textAlign = "center";
+        console.log(p.innerHTML);
         $("#order_div").load("/menu #" + p.innerHTML);
+        var dish = document.getElementById('dish_title');
+        console.log(document.getElementById('order_div'));
         var id = "order_button";
+        var id2 = "dish_title";
         var elm = {};
         var div = document.getElementById("order_div")
         setTimeout(() => {
             var elms = div.getElementsByTagName("*");
             for (var i = 0; i < elms.length; i++) {
-                if (elms[i].id == id) {
+                if (id && elms[i].id == id) {
                     elm = elms[i];
-                    break;
+                    id = null;
+                } else if (id2 && elms[i].id == id2) {
+                    var d = document.getElementById("dish");
+                    d.value = elms[i].innerHTML;
+                    d.style.width = (d.value.length + 1)*10 + "px";
+                    d.style.textAlign = "center";
+                    id2 == null;
+                    console.log("hi")
                 };
+                if (id == null && id2 == null) {
+                    break;
+                }
             };
             elm.remove();
         }, 100);
