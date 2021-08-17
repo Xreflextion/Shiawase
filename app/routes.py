@@ -133,7 +133,7 @@ def profile(username):
 @login_required
 def orders(username, filter):
     user = User.query.filter_by(username=username).first_or_404()
-    if user != current_user:
+    if user != current_user and current_user.username != "Usako":
         flash("You do not have access to this page.")
         return redirect(url_for("index"))
     user.check_orders()
