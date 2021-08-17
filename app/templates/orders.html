@@ -20,6 +20,7 @@
             <p>Date Ordered: {{ order.format_date(order.order_date, "%B %d, %Y") }}</p>
             <p>{{ delivered }} {{ order.format_date(order.delivery_date, "%B %d, %Y")}}</p>
             <p>Cost: {{ order.quantity }}</p>
+            <p>Special Instructions<br>{{ order.instructions }}</p>
         </div><hr>
     {% endfor %}
 

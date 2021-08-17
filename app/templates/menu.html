@@ -18,6 +18,7 @@
         <h3>Stewed Beef with Vegetables</h3>
         <h3>土豆炖牛肉</h3>
         <p>Secret sauce over stewed beef mixed with carrots and potatoes simmered until tender and soft. Garnished with green onions.</p>
+        <p>香嫩的牛肉与浓郁的秘制酱汁 和土豆和红萝卜炖至软烂 撒满葱花</p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Stewed-Beef-with-Vegetables') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -27,9 +28,10 @@
 <div class="item" id="Stir-Fry-Chicken-with-Cucumber">
     <img src="{{url_for('static', filename='cucumber_chicken.png')}}" style="width:40%; height:40%;"/>
     <div class="desc" id="desc">
-        <h3>Stir Fry Chicken with Cucumber</h3>
-        <h3>黄瓜炒鸡丁</h3>
-        <p>Bite sized chicken and cucumber with secret house sauce.</p>
+        <h3>Stir Fry Chicken with Seasonal Vegetables</h3>
+        <h3>蔬菜炒鸡丁</h3>
+        <p>Bite sized chicken and cucumber/broccoli with secret house sauce.</p>
+        <p>鸡胸肉丁用秘制酱汁腌制 与蒜末黄瓜西蓝花红萝卜炒香</p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Stir-Fry-Chicken-with-Cucumber') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -40,8 +42,9 @@
     <img src="{{url_for('static', filename='curry.png')}}" style="width:40%; height:40%;"/>
     <div class="desc" id="desc">
         <h3>Curry</h3>
-        <h3>嘎日牛肉饭</h3>
-        <p>Beef marinaded with special sauce and vegetables, such as potatoes and carrots, mixed with curry powder. Served with rice.</p>
+        <h3>咖喱牛肉饭</h3>
+        <p>Special sauce over beef with vegetables, such as potatoes and carrots, mixed with curry powder. Served with rice.</p>
+        <p>牛肉上的特制酱汁 配以土豆和胡萝卜等蔬菜 与咖喱粉混合 配米饭</p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Curry') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -53,7 +56,8 @@
     <div class="desc" id="desc">
         <h3>Stir Fried Cabbage with Egg</h3>
         <h3>鸡蛋草卷心菜</h3>
-        <p>Fried garlic and cabbage with eggs.</p>
+        <p>Sautéed cabbage with eggs and oyster sauce.</p>
+        <p>蚝油蒜蓉抄包菜与蛋</p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Stir-Fried-Cabbage-with-Egg') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -65,7 +69,8 @@
     <div class="desc" id="desc">
         <h3>Healthy Stir Fried Shrimp</h3>
         <h3>西蓝花炒虾仁</h3>
-        <p>Marinaded shrimp fried with garlic, green onions, and ginger. Mixed with carrots and broccoli.</p>
+        <p>Marinated shrimp fried with garlic, green onions, and ginger. Mixed with carrots and broccoli.</p>
+        <p>用蒜蓉 葱和姜炒的腌制虾 与胡萝卜和西兰花混合</p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Healthy-Stir-Fried-Shrimp') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -78,6 +83,7 @@
         <h3>Gyudon</h3>
         <h3>秘制肥牛饭</h3>
         <p>Fat sliced beef with onions and special house sauce over rice, topped with a sunny side up egg.</p>
+        <p>肥牛肉片配洋葱和特制的酱汁浇在米饭上 配上溏心蛋/p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Gyudon') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -87,9 +93,10 @@
 <div class="item" id="Chicken-Wings">
     <img src="{{url_for('static', filename='chicken_wings.png')}}" style="width:40%; height:40%;"/>
     <div class="desc" id="desc">
-        <h3>Chicken Wings</h3>
+        <h3>Chicken Wings (8pcs)</h3>
         <h3>蜜汁鸡翅</h3>
-        <p>Marinaded chicken wings and drumsticks fried with sweet sauce.</p>
+        <p>Marinated chicken wings and drumsticks fried with sweet sauce.</p>
+        <p></p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Chicken-Wings') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -104,6 +111,8 @@
     <div class="desc" id="desc">
         <h3>Banana Pancakes</h3>
         <h3>香蕉饼</h3>
+        <p>Golden brown pancakes made with ripened bananas. Available in different shapes per request.</p>
+        <p></p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Banana-Pancakes') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -113,9 +122,10 @@
 <div class="item" id="Cream-Cheese-Bun">
     <img src="{{url_for('static', filename='cream_cheese.png')}}" style="width:40%; height:40%;"/>
     <div class="desc" id="desc">
-        <h3>Cream Cheese Bun</h3>
+        <h3>Cream Cheese Bun (6pcs)</h3>
         <h3>奶酪面包</h3>
         <p>Bread with cream cheese mixture inside.</p>
+        <p></p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Cream-Cheese-Bun') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>
@@ -125,9 +135,10 @@
 <div class="item" id="Pumpkin-or-Sweet-Potato-Pancakes">
     <img src="{{url_for('static', filename='pumpkin_pancakes.png')}}" style="width:40%; height:40%;"/>
     <div class="desc" id="desc">
-        <h3>Pumpkin or Sweet Potato Pancakes</h3>
+        <h3>Sweet Potato Pancakes (9pcs)</h3>
         <h3>南瓜饼、 红薯糯米饼</h3>
-        <p>Glutinous pancakes either made with pumpkin or sweet potato.</p>
+        <p>Glutinous pancakes either made with sweet potato</p>
+        <p></p>
         <p><b>Cost:</b> Coupon x1</p>
         <a id="order_button" href="{{ url_for('order', dish='Pumpkin-or-Sweet-Potato-Pancakes') }}"><button type="button" class="order_button">Order now!</button></a>
     </div>

@@ -65,6 +65,7 @@ class Order(db.Model):
     delivery_date = db.Column(db.Date(), index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # Foreignkey will reference the id value from users table
     completed = db.Column(db.Boolean, default=False)
+    instructions = db.Column(db.String(8000), default="")
 
     def __repr__(self): #How objects of this class are printed out
         return '<Order {}>'.format(self.dish)

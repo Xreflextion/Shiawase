@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <p id="flash_msg"></p>
     {% if current_user.is_anonymous %}
         <h1 id="heading">Welcome, new user!</h1>
     {% elif current_user.check_bday() and not current_user.bday_celebrated %}
@@ -54,6 +55,7 @@
                 img.style.width = "30%";
                 img.style.left = Math.random() * (width - 117*2) +"px";
                 img.style.top = height + "px";
+                img.className = "balloon";
                 img.src = Flask.url_for("static", {"filename": name});
                 document.getElementById('body').appendChild(img);
                 move(img, 0, height, name, 0);
@@ -125,7 +127,15 @@
             
             <textarea id="txt" placeholder="Write something!" style="width: 75%; display: block;"></textarea><br>
 
-            <button id="button" type="button" class="submit">Enter</button>
+            <button id="button" type="button" class="submit" onclick="clear_txt()">Enter</button>
         </div>
+        <script>
+            function clear_txt() {
+                document.getElementById('txt').value = '';
+                var msg = document.getElementById('flash_msg');
+                msg.className = 'msg';
+                msg.innerHTML = "Thanks for the message!";
+            }
+        </script>
     {% endif %}
 {% endblock %}

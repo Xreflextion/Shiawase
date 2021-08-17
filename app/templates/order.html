@@ -56,7 +56,7 @@
         var dish = s.split("-").join(" ");
         var d = document.getElementById("dish");
         d.value = dish;
-        d.style.width = (d.value.length + 1)*9 + "px";
+        d.style.width = (d.value.length + 1)*11 + "px";
         d.style.textAlign = "center";
         $("#order_div").load("/menu #" + p.innerHTML);
         var id = "order_button";

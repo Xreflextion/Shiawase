@@ -5,4 +5,3 @@
 !.elasticbeanstalk/*.global.yml
 __pycache__/
 .DS_Store
-.flaskenv
