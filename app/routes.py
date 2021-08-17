@@ -147,7 +147,7 @@ def orders(username, filter):
 @login_required
 def completed_orders(username, filter):
     user = User.query.filter_by(username=username).first_or_404()
-    if user != current_user:
+    if user != current_user and current_user.username != "Usako":
         flash("You do not have access to this page.")
         return redirect(url_for("index"))
     user.check_orders()
@@ -170,10 +170,10 @@ def bday():
     return jsonify({"bday": "complete"})
         
 def get_filter(s, complete, user):
-    if s == "Dish":
+    if s == "dish":
         return Order.query.filter_by(user_id=user.id, completed=complete).order_by(Order.dish.asc()).all()
-    elif s == "Date ordered":
+    elif s == "order_date":
         return Order.query.filter_by(user_id=user.id, completed=complete).order_by(Order.order_date.asc()).all()
-    elif s == "Delivery Date":
+    elif s == "delivery_date":
         return Order.query.filter_by(user_id=user.id, completed=complete).order_by(Order.delivery_date.asc()).all()
     return Order.query.filter_by(user_id=user.id, completed=complete).order_by(Order.delivery_date.asc()).all()
